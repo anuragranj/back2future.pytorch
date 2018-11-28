@@ -6,7 +6,7 @@ Janai, J., Güney, F., Ranjan, A., Black, M. and Geiger, A., **Unsupervised Lear
 
 ## Requirements
 - Runs and tested on [Pytorch 0.3.1](https://pytorch.org/get-started/previous-versions/), it should be compatible with higher versions with little/no modifications.
-- Correlation package can be installed using
+- Correlation package is taken from [NVIDIA/flownet2-pytorch](https://github.com/NVIDIA/flownet2-pytorch/) and it can be installed using
 ```bash
 cd correlation_package
 bash make.sh
@@ -18,7 +18,7 @@ To use the model, go to your favorite python environment
 from back2future import Model
 model = Model(pretrained='pretrained/path_to_your_favorite_model')
 ```
-There are two pretrained models in `pretrained/`, that are fine tuned on Sintel and KITTI with no supervision.
+There are two pretrained models in `pretrained/`, that are fine tuned on Sintel and KITTI in an unsupervised way.
 
 Refer to `demo.py` for more.
 
