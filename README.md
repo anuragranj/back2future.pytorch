@@ -18,7 +18,7 @@ To use the model, go to your favorite python environment
 from back2future import Model
 model = Model(pretrained='pretrained/path_to_your_favorite_model')
 ```
-There are two pretrained models in `pretrained/`, that are fine tuned on Sintel and KITTI without supervision.
+There are two pretrained models in `pretrained/`, that are fine tuned on Sintel and KITTI with no supervision.
 
 Refer to `demo.py` for more.
 
