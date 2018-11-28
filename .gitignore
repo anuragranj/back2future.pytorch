@@ -1,0 +1,3 @@
+*.pyc
+*.o
+correlation_package/_ext/*
