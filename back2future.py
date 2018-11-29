@@ -122,8 +122,6 @@ class Model(nn.Module):
     def normalize(self, ims):
         imt = []
         for im in ims:
-            im = im * 0.5
-            im = im + 0.5
             im[:,0,:,:] = im[:,0,:,:] - 0.485  # Red
             im[:,1,:,:] = im[:,1,:,:] - 0.456 # Green
             im[:,2,:,:] = im[:,2,:,:] - 0.406 # Blue
