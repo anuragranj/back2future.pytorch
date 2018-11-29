@@ -119,6 +119,21 @@ class Model(nn.Module):
             print("Loading ", key)
             self.load(key, map[key])
 
+    def normalize(self, ims):
+        imt = []
+        for im in ims:
+            im = im * 0.5
+            im = im + 0.5
+            im[:,0,:,:] = im[:,0,:,:] - 0.485  # Red
+            im[:,1,:,:] = im[:,1,:,:] - 0.456 # Green
+            im[:,2,:,:] = im[:,2,:,:] - 0.406 # Blue
+
+            im[:,0,:,:] = im[:,0,:,:] / 0.229  # Red
+            im[:,1,:,:] = im[:,1,:,:] / 0.224 # Green
+            im[:,2,:,:] = im[:,2,:,:] / 0.225 # Blue
+
+            imt.append(im)
+        return imt
 
     def forward(self, im_tar, im_refs):
         '''
@@ -126,21 +141,23 @@ class Model(nn.Module):
                 im_tar : Centre Frame
                 im_refs : List constaining [Past_Frame, Future_Frame]
         '''
-        feat1a = self.conv1a(im_tar)
+        im_norm = self.normalize([im_tar] + im_refs)
+
+        feat1a = self.conv1a(im_norm[0])
         feat2a = self.conv2a(feat1a)
         feat3a = self.conv3a(feat2a)
         feat4a = self.conv4a(feat3a)
         feat5a = self.conv5a(feat4a)
         feat6a = self.conv6a(feat5a)
 
-        feat1b = self.conv1b(im_refs[1])
+        feat1b = self.conv1b(im_norm[2])
         feat2b = self.conv2b(feat1b)
         feat3b = self.conv3b(feat2b)
         feat4b = self.conv4b(feat3b)
         feat5b = self.conv5b(feat4b)
         feat6b = self.conv6b(feat5b)
 
-        feat1c = self.conv1c(im_refs[0])
+        feat1c = self.conv1c(im_norm[1])
         feat2c = self.conv2c(feat1c)
         feat3c = self.conv3c(feat2c)
         feat4c = self.conv4c(feat3c)
