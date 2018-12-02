@@ -1,3 +1,6 @@
+-- Author: Anurag Ranjan
+-- Copyright (c) 2018, Max Planck Society 
+
 require 'paths'
 require 'torch'
 require 'cutorch'
