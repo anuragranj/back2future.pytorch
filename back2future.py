@@ -1,3 +1,6 @@
+# Author: Anurag Ranjan
+# Copyright (c) 2018, Max Planck Society 
+
 import os
 import numpy as np
 
