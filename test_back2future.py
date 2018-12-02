@@ -1,3 +1,6 @@
+# Author: Anurag Ranjan
+# Copyright (c) 2018, Max Planck Society 
+
 import argparse
 import torch
 import torch.nn as nn
@@ -12,7 +15,7 @@ import numpy as np
 from back2future import Model
 import flow_io
 
-parser = argparse.ArgumentParser(description='Structure from Motion Learner training on KITTI and CityScapes Dataset',
+parser = argparse.ArgumentParser(description='Code to test performace of Back2Future models on KITTI benchmarks',
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('--pretrained-flow', dest='pretrained_flow', default=None, metavar='PATH',
                     help='path to pre-trained Flow net model')
