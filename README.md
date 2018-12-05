@@ -28,6 +28,9 @@ To test performance on KITTI, use
 python3 test_back2future.py --pretrained-flow path/to/pretrained/model --kitti-dir path/to/kitti/2015/root
 ```
 
+## Training
+Please use the [[original torch code](https://github.com/jjanai/back2future)] for training new models.
+
 ## License
 This is a reimplementation. License for the original work can be found at [JJanai/back2future](https://github.com/JJanai/back2future/blob/master/LICENSE).
 
