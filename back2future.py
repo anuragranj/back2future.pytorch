@@ -176,7 +176,7 @@ class Model(nn.Module):
         flow6_bwd = self.decoder_bwd6(corr6)
         flow6_bwd_up = self.upsample(flow6_bwd)
         feat5b_warped = self.warp(feat5b, 0.625*flow6_fwd_up)
-        feat5c_warped = self.warp(feat5c, -0.625*flow6_fwd_up)
+        feat5c_warped = self.warp(feat5c, -0.625*flow6_bwd_up)
 
         occ6_feat = torch.cat((corr6, feat6a), 1)
         occ6 = self.softmax2d(self.decoder_occ6(occ6_feat))
@@ -194,7 +194,7 @@ class Model(nn.Module):
         flow5_bwd = self.decoder_bwd5(upfeat5_bwd)
         flow5_bwd_up = self.upsample(flow5_bwd)
         feat4b_warped = self.warp(feat4b, 1.25*flow5_fwd_up)
-        feat4c_warped = self.warp(feat4c, -1.25*flow5_fwd_up)
+        feat4c_warped = self.warp(feat4c, -1.25*flow5_bwd_up)
 
         occ5 = self.softmax2d(self.decoder_occ5(upfeat5_fwd))
 
@@ -211,7 +211,7 @@ class Model(nn.Module):
         flow4_bwd = self.decoder_bwd4(upfeat4_bwd)
         flow4_bwd_up = self.upsample(flow4_bwd)
         feat3b_warped = self.warp(feat3b, 2.5*flow4_fwd_up)
-        feat3c_warped = self.warp(feat3c, -2.5*flow4_fwd_up)
+        feat3c_warped = self.warp(feat3c, -2.5*flow4_bwd_up)
 
         occ4 = self.softmax2d(self.decoder_occ4(upfeat4_fwd))
 
@@ -228,7 +228,7 @@ class Model(nn.Module):
         flow3_bwd = self.decoder_bwd3(upfeat3_bwd)
         flow3_bwd_up = self.upsample(flow3_bwd)
         feat2b_warped = self.warp(feat2b, 5.0*flow3_fwd_up)
-        feat2c_warped = self.warp(feat2c, -5.0*flow3_fwd_up)
+        feat2c_warped = self.warp(feat2c, -5.0*flow3_bwd_up)
 
         occ3 = self.softmax2d(self.decoder_occ3(upfeat3_fwd))
 
